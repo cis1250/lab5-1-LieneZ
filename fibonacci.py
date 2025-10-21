@@ -8,7 +8,7 @@ def positive():
     while num < 0:
         try:
             num = int(input("How many Fibonacci terms do you want? "))
-            if (num < 0):
+            if num < 0:
                 print("Invalid input: please enter a positive integer.")
             else:
                 continue
@@ -38,6 +38,9 @@ def print_fib(out):
     print(out, end=' ')
 
 
+def main():
+    fibonacci_seq(positive())
 
-fibonacci_seq(positive())
+if __name__ == "__main__":
+        main()
 
