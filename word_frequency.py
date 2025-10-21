@@ -5,7 +5,7 @@
 
 import re
 
-#This is a function that checks if a text qualifies as a sentence. You do not need to modify this!
+# This is a function that checks if a text qualifies as a sentence. You do not need to modify this!
 def is_sentence(text):
     # Check if the text is not empty and is a string
     if not isinstance(text, str) or not text.strip():
@@ -24,3 +24,32 @@ def is_sentence(text):
         return False
 
     return True
+
+
+# 1. Prompt the user: Ask the user to enter a sentence.
+# 2. Split the sentence
+# 3. Create lists to store words and their corresponding frequencies.
+# 4. Iterate through words and update frequencies
+
+user_sentence = input("Enter a sentence: ")
+
+while (is_sentence(user_sentence) == False):
+    print("This does not meet the criteria for a sentence.")
+    user_input = input("Enter a sentence: ")
+
+sentence_words = user_sentence.split()
+
+words = []
+frequencies = []
+
+for w in sentence_words:
+    w = w.lower()
+    w = w.rstrip("!,?.:;")
+    if w not in words:
+        words.append(w)
+        frequencies.append(1)
+    else:
+        frequencies[words.index(w)] += 1
+
+for i in range(0, len(words)):
+    print(words[i], ": ", frequencies[i], sep='')
