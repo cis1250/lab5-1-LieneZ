@@ -31,25 +31,46 @@ def is_sentence(text):
 # 3. Create lists to store words and their corresponding frequencies.
 # 4. Iterate through words and update frequencies
 
-user_sentence = input("Enter a sentence: ")
+def get_sentence():
+    user_sentence = input("Enter a sentence: ")
 
-while (is_sentence(user_sentence) == False):
-    print("This does not meet the criteria for a sentence.")
-    user_input = input("Enter a sentence: ")
+    while (is_sentence(user_sentence) == False):
+        print("This does not meet the criteria for a sentence.")
+        user_sentence = input("Enter a sentence: ")
 
-sentence_words = user_sentence.split()
+    return user_sentence
 
-words = []
-frequencies = []
 
-for w in sentence_words:
-    w = w.lower()
-    w = w.rstrip("!,?.:;")
-    if w not in words:
-        words.append(w)
-        frequencies.append(1)
-    else:
-        frequencies[words.index(w)] += 1
+def calculate_frequencies(sentence):
+    words = []
+    frequencies = []
 
-for i in range(0, len(words)):
-    print(words[i], ": ", frequencies[i], sep='')
+    for w in sentence:
+        w = w.lower()
+        w = w.rstrip("!,?.:;")
+        if w not in words:
+            words.append(w)
+            frequencies.append(1)
+        else:
+            frequencies[words.index(w)] += 1
+
+    print_frequencies(words, frequencies)
+
+
+def print_frequencies(words, frequencies):
+    for i in range(0, len(words)):
+        print(words[i], ": ", frequencies[i], sep='')
+
+
+
+def main():
+
+    sentence = get_sentence()
+    sentence = sentence.split()
+
+    calculate_frequencies(sentence)
+
+
+if __name__ == "__main__":
+        main()
+
