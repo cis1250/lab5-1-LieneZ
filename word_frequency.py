@@ -34,7 +34,7 @@ def is_sentence(text):
 def get_sentence():
     user_sentence = input("Enter a sentence: ")
 
-    while (is_sentence(user_sentence) == False):
+    while is_sentence(user_sentence) == False:
         print("This does not meet the criteria for a sentence.")
         user_sentence = input("Enter a sentence: ")
 
